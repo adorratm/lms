@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2023 at 03:41 PM
+-- Generation Time: Mar 21, 2023 at 03:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -49,7 +49,8 @@ INSERT INTO `addons` (`id`, `name`, `unique_identifier`, `version`, `status`, `c
 (3, 'Assignment', 'assignment', '1.1', 1, 1616454000, NULL, 'You can create assignments for students enrolled in your course, and review the submitted assignment to know the course progress of your enrolled students using this add-on.', NULL),
 (4, 'Course Analytics', 'course_analytics', '1.0', 1, 1616454000, NULL, 'You will be able to see the course progress for all enrolled students here. Which will help you understand the needs of your students. On the left side of the chart, you will see the range of the top number of students, and on the bottom of the chart, you will see the range of percentage. Also, you will able to see the table of the chart on the right side.', NULL),
 (5, 'Live Class', 'live-class', '1.4', 1, 1616454000, NULL, 'Live Class addon adds an essential feature to Academy. Nowadays Live class has become so popular that it becomes necessary. On that note we decided to add Zoom in our application.', NULL),
-(6, 'Course Forum', 'forum', '1.0', 1, 1616454000, NULL, 'It opportunity the user to any questions or answers about courses.', NULL);
+(6, 'Course Forum', 'forum', '1.0', 1, 1616454000, NULL, 'It opportunity the user to any questions or answers about courses.', NULL),
+(7, 'Ebook', 'ebook', '1.0', 1, 1616454000, NULL, 'An ebook (short for electronic book), also known as an e-book or eBook, is a book publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices.[1] Although sometimes defined as an electronic version of a printed book,[2] some e-books exist without a printed equivalent. E-books can be read on dedicated e-reader devices, but also on any computer device that features a controllable viewing screen, including desktop computers, laptops, tablets, and smartphones.', NULL);
 
 -- --------------------------------------------------------
 
@@ -235,7 +236,7 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('fs5i6irf99sgpnber77l2dinha6pluiq', '::1', 1679400033, 0x5f5f63695f6c6173745f726567656e65726174657c693a313637393430303033333b636f756e7443616c6c7c693a313b5f5f63695f766172737c613a313a7b733a393a22636f756e7443616c6c223b733a333a226f6c64223b7d636172745f6974656d737c613a303a7b7d6c616e67756167657c733a373a22656e676c697368223b),
 ('67pfnqki0ci8j264rg79k8uevdrdo9jq', '::1', 1679400033, 0x5f5f63695f6c6173745f726567656e65726174657c693a313637393430303033333b636f756e7443616c6c7c693a313b5f5f63695f766172737c613a313a7b733a393a22636f756e7443616c6c223b733a333a226e6577223b7d636172745f6974656d737c613a303a7b7d6c616e67756167657c733a373a22656e676c697368223b),
 ('qkhvafe2n11altd4i6t6p6dbl1au70q5', '::1', 1679400033, 0x5f5f63695f6c6173745f726567656e65726174657c693a313637393430303033333b636f756e7443616c6c7c693a313b5f5f63695f766172737c613a313a7b733a393a22636f756e7443616c6c223b733a333a226e6577223b7d636172745f6974656d737c613a303a7b7d6c616e67756167657c733a373a22656e676c697368223b),
-('8d26pff4tmg127ij9hfe9fi800mp7j1b', '::1', 1679409683, 0x5f5f63695f6c6173745f726567656e65726174657c693a313637393430303033333b636172745f6974656d737c613a303a7b7d6c616e67756167657c733a373a22656e676c697368223b637573746f6d5f73657373696f6e5f6c696d69747c693a313638303237333638333b757365725f69647c733a313a2231223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31303a22457273696e20486f6361223b69735f696e7374727563746f727c733a313a2231223b61646d696e5f6c6f67696e7c733a313a2231223b);
+('8d26pff4tmg127ij9hfe9fi800mp7j1b', '::1', 1679410120, 0x5f5f63695f6c6173745f726567656e65726174657c693a313637393430303033333b636172745f6974656d737c613a303a7b7d6c616e67756167657c733a373a22656e676c697368223b637573746f6d5f73657373696f6e5f6c696d69747c693a313638303237343132303b757365725f69647c733a313a2231223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31303a22457273696e20486f6361223b69735f696e7374727563746f727c733a313a2231223b61646d696e5f6c6f67696e7c733a313a2231223b666c6173685f6d6573736167657c733a32383a224164646f6e20696e7374616c6c6564207375636365737366756c6c79223b5f5f63695f766172737c613a313a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d);
 
 -- --------------------------------------------------------
 
@@ -546,6 +547,33 @@ CREATE TABLE `custom_page` (
   `button_position` varchar(255) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ebook`
+--
+
+CREATE TABLE `ebook` (
+  `ebook_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `thumbnail` varchar(255) DEFAULT NULL,
+  `banner` varchar(255) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `publication_name` varchar(255) DEFAULT NULL,
+  `edition` varchar(255) DEFAULT NULL,
+  `discount_flag` int(11) DEFAULT NULL,
+  `discounted_price` double NOT NULL,
+  `price` double NOT NULL,
+  `added_date` varchar(255) DEFAULT NULL,
+  `updated_date` varchar(255) DEFAULT NULL,
+  `is_active` int(11) DEFAULT NULL,
+  `is_free` int(11) DEFAULT NULL,
+  `preview` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1075,11 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`) VALUES
 (423, 'you_are_just_one_click_away', 'You are just one click away'),
 (424, 'submit', 'Submit'),
 (425, 'live_class_settings', 'Live class settings'),
-(426, 'add_new_category', 'Add new category');
+(426, 'add_new_category', 'Add new category'),
+(427, 'ebook', 'Ebook'),
+(428, 'all_ebooks', 'All ebooks'),
+(429, 'add_ebook', 'Add ebook'),
+(430, 'payment_history', 'Payment history');
 
 -- --------------------------------------------------------
 
@@ -1580,6 +1612,12 @@ ALTER TABLE `custom_page`
   ADD PRIMARY KEY (`custom_page_id`);
 
 --
+-- Indexes for table `ebook`
+--
+ALTER TABLE `ebook`
+  ADD PRIMARY KEY (`ebook_id`);
+
+--
 -- Indexes for table `enrol`
 --
 ALTER TABLE `enrol`
@@ -1720,7 +1758,7 @@ ALTER TABLE `watch_histories`
 -- AUTO_INCREMENT for table `addons`
 --
 ALTER TABLE `addons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `applications`
@@ -1819,6 +1857,12 @@ ALTER TABLE `custom_page`
   MODIFY `custom_page_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `ebook`
+--
+ALTER TABLE `ebook`
+  MODIFY `ebook_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `enrol`
 --
 ALTER TABLE `enrol`
@@ -1834,7 +1878,7 @@ ALTER TABLE `frontend_settings`
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
-  MODIFY `phrase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=427;
+  MODIFY `phrase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
 -- AUTO_INCREMENT for table `lesson`
